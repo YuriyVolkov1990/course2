@@ -5,10 +5,10 @@ import com.example.course2.model.Question;
 import java.util.Collection;
 
 public interface QuestionService {
-    Question add(String question, String answer);
-    Question add(Question question);
-    Question remove(String question, String answer);
-    Question remove(Question question);
+    Question addQuestion(String question, String answer);
+    Question addQuestion(Question question);
+    Question removeQuestion(String question, String answer);
+    Question removeQuestion(Question question);
     Collection<Question> getAll();
     Question getRandomQuestion();
 

@@ -13,12 +13,12 @@ public class JavaQuestionService implements QuestionService {
     public static final Random RANDOM = new Random();
     List<Question> questions = new ArrayList<>();
     @Override
-    public Question add(String question, String answer) {
-        return add(new Question(question, answer));
+    public Question addQuestion(String question, String answer) {
+        return addQuestion(new Question(question, answer));
     }
 
     @Override
-    public Question add(Question question) {
+    public Question addQuestion(Question question) {
         if (questions.contains(question)) {
             throw new QuestionAlreadyExistsException();
         }
@@ -27,12 +27,12 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public Question remove(String question, String answer) {
-        return remove(new Question(question, answer));
+    public Question removeQuestion(String question, String answer) {
+        return removeQuestion(new Question(question, answer));
     }
 
     @Override
-    public Question remove(Question question) {
+    public Question removeQuestion(Question question) {
         if (questions.remove(question)) {
             return question;
         }
