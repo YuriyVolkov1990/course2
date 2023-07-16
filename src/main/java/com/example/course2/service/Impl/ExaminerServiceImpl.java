@@ -27,7 +27,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 //            randomQuestions.add(questionService.getRandomQuestion());
 //        }
 //        return randomQuestions;
-        return Stream.generate(() -> questionService.getRandomQuestion())
+        return Stream.generate(questionService::getRandomQuestion)
                 .distinct()
                 .limit(amount)
                 .collect(Collectors.toList());
