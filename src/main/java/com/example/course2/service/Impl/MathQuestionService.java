@@ -1,21 +1,21 @@
 package com.example.course2.service.Impl;
 
-import com.example.course2.exception.QuestionAlreadyExistsException;
-import com.example.course2.exception.QuestionNotFoundException;
 import com.example.course2.model.Question;
 import com.example.course2.repository.QuestionRepository;
 import com.example.course2.service.QuestionService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
+import java.util.Random;
 
 @Service
-public class JavaQuestionService implements QuestionService {
+public class MathQuestionService implements QuestionService {
     private static final Random random = new Random();
     private final QuestionRepository questionRepository;
 
-    public JavaQuestionService(@Qualifier("questionRepositoryImpl") QuestionRepository questionRepository) {
+    public MathQuestionService(@Qualifier("mathRepositoryImpl") QuestionRepository questionRepository) {
         this.questionRepository = questionRepository;
     }
 
