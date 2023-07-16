@@ -7,10 +7,11 @@ import com.example.course2.service.QuestionService;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
-    private Random random;
     private final QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
@@ -21,11 +22,15 @@ public class ExaminerServiceImpl implements ExaminerService {
         if (amount > questionService.getAll().size()) {
             throw new AmountQuestionsException();
         }
-        Set<Question> randomQuestions = new HashSet<>(amount);
-        for (int i = 0; i < amount-1; i++) {
-            randomQuestions.add(questionService.getRandomQuestion());
-        }
-        return randomQuestions;
+//        Set<Question> randomQuestions = new HashSet<>(amount);
+//        while (randomQuestions.size() < amount) {
+//            randomQuestions.add(questionService.getRandomQuestion());
+//        }
+//        return randomQuestions;
+        return Stream.generate(() -> questionService.getRandomQuestion())
+                .distinct()
+                .limit(amount)
+                .collect(Collectors.toList());
     }
 
 }

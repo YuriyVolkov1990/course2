@@ -10,8 +10,8 @@ import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    public static final Random RANDOM = new Random();
-    List<Question> questions = new ArrayList<>();
+    private static final Random random = new Random();
+    Set<Question> questions = new HashSet<>();
     @Override
     public Question addQuestion(String question, String answer) {
         return addQuestion(new Question(question, answer));
@@ -46,6 +46,8 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question getRandomQuestion() {
-        return questions.get(RANDOM.nextInt(questions.size()));
+        Question[] forRandom = getAll().toArray(new Question[0]);
+        int i = random.nextInt(questions.size());
+        return forRandom[i];
     }
 }
