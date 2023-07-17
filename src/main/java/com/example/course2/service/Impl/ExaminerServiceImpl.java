@@ -46,7 +46,7 @@ public class ExaminerServiceImpl implements ExaminerService {
             case 1:
                 return mathQuestionService;
             default:
-                return null;
+                throw new RuntimeException();
         }
     }
 }

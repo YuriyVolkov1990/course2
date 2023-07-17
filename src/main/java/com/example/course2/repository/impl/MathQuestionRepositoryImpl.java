@@ -6,9 +6,12 @@ import com.example.course2.model.Question;
 import com.example.course2.repository.QuestionRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @Repository
-public class QuestionRepositoryImpl implements QuestionRepository {
+public class MathQuestionRepositoryImpl implements QuestionRepository {
     private final List<Question> questions = new ArrayList<>();
     @Override
     public Question add(Question question) {
