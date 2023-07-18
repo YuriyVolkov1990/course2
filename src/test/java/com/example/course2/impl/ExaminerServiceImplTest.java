@@ -43,11 +43,11 @@ public class ExaminerServiceImplTest {
         when(javaQuestionService.getAll()).thenReturn(questionsJava);
 
     }
-//    @Test
-//    void getQuestionsExceptionTest() {
-//        assertThrows(AmountQuestionsException.class,
-//                () -> examinerService.getQuestions(20));
-//    }
+    @Test
+    void getQuestionsExceptionTest() {
+        assertThrows(AmountQuestionsException.class,
+                () -> examinerService.getQuestions(20));
+    }
     @Test
     void getQuestionsTest() {
 
