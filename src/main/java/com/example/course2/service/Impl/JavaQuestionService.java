@@ -1,6 +1,7 @@
 package com.example.course2.service.Impl;
 
 import com.example.course2.exception.QuestionAlreadyExistsException;
+import com.example.course2.exception.QuestionAndAnswerEqualsException;
 import com.example.course2.exception.QuestionNotFoundException;
 import com.example.course2.model.Question;
 import com.example.course2.repository.QuestionRepository;
@@ -21,6 +22,9 @@ public class JavaQuestionService implements QuestionService {
 
     @Override
     public Question addQuestion(String question, String answer) {
+        if (Objects.equals(question, answer)) {
+            throw new QuestionAndAnswerEqualsException();
+        }
         return addQuestion(new Question(question, answer));
     }
 

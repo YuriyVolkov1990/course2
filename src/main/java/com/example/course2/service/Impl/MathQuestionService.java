@@ -1,5 +1,6 @@
 package com.example.course2.service.Impl;
 
+import com.example.course2.exception.QuestionAndAnswerEqualsException;
 import com.example.course2.model.Question;
 import com.example.course2.repository.QuestionRepository;
 import com.example.course2.service.QuestionService;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 @Service
@@ -21,6 +23,9 @@ public class MathQuestionService implements QuestionService {
 
     @Override
     public Question addQuestion(String question, String answer) {
+        if (Objects.equals(question, answer)) {
+            throw new QuestionAndAnswerEqualsException();
+        }
         return addQuestion(new Question(question, answer));
     }
 
